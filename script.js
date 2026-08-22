@@ -13,6 +13,10 @@ function Book(title, author, pages, isRead, id) {
 
         return `${this.title} by ${this.author}, ${this.pages} pages, ${readStatus}.`
     }
+
+    this.getID = function() {
+        return this.id;
+    }
 }
 
 function addBookToLibrary(title, author, pages, isRead) {
@@ -54,8 +58,16 @@ function displayBookToScreen() {
         // Append deleteBtnTableData to tr
         tr.appendChild(deleteBtnTableData);
 
-        // Apopend tr to tbody
+        // Append tr to tbody
         tbody.appendChild(tr);
+
+        
+
+
+        // Remove Book object eventlistener
+        deleteBtn.addEventListener('click', () => {
+            console.log(myLibrary[i].getID());
+        });
     }
 }
 
