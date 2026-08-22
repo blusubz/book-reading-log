@@ -35,17 +35,29 @@ function displayBookToScreen() {
         const tr = document.createElement('tr');
         const bookPropertiesArr = [myLibrary[i].title, myLibrary[i].author, myLibrary[i].pages, myLibrary[i].isRead];
 
-        // Loop to add current td elements into current tr
+        // Loop to add current book property elements into current table row
         for (let j = 0; j < bookPropertiesArr.length; j++) {
             const td = document.createElement('td');
             td.textContent = bookPropertiesArr[j]
             tr.appendChild(td);
         }
+
+        // Create button to remove book from table
+        const deleteBtn = document.createElement('button');
+        const deleteBtnTableData = document.createElement('td');
+        // Set an id for deleteBtn
+        deleteBtn.setAttribute('id', 'deleteBtn');
+        // Give deleteBtn text
+        deleteBtn.textContent = 'Remove Book';
+        // Append deleteBtn to td
+        deleteBtnTableData.appendChild(deleteBtn);
+        // Append deleteBtnTableData to tr
+        tr.appendChild(deleteBtnTableData);
+
+        // Apopend tr to tbody
         tbody.appendChild(tr);
     }
 }
-
-/* Driver Code Below */
 
 // Books to add to Library
 // addBookToLibrary('The Voudou Quantum Leap', 'Reginald Crosley', 384, true);
@@ -68,9 +80,9 @@ showDialog.addEventListener('click', () => {
     dialog.showModal();
 });
 
+/* Driver Code Below */
 form.addEventListener('submit', (e) => {
-    e.preventDefault();
-
+    e.preventDefault(); // Stops refresh of the page after button submit is clicked which would remove all data displayed on screen
 
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;

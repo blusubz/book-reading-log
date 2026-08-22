@@ -40,6 +40,10 @@ th {
     padding: 5px;
 }
 
+td:last-child {
+    text-align: center;
+}
+
 button {
     padding: 5px;
     background-color: rgb(52, 75, 221);
@@ -49,4 +53,10 @@ button {
 
 button:hover {
     cursor: pointer;
+}
+
+#deleteBtn {
+    border-radius: 10px;
+    color: rgb(52, 75, 221);
+    background-color: rgba(255, 255, 0, 0.716);
 }
