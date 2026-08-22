@@ -59,17 +59,27 @@ function displayBookToScreen() {
 // addBookToLibrary('Initiation Into Hermetics', 'Franz Bardon', 356, false);
 // addBookToLibrary('The Key to True Quabbalah', 'Franz Bardon', 280, false);
 
-function userInput() {
-    // pass
-}
-
-
-displayBookToScreen();
-
 /* Dialog Trigger */
 const showDialog = document.getElementById('show-dialog');
 const dialog = document.getElementById('dialog');
+const form = document.getElementById('book-inputs');
 
 showDialog.addEventListener('click', () => {
     dialog.showModal();
-})
+});
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const pages = document.getElementById('pages').value;
+    const isRead = document.getElementById('read-status').checked;
+
+    addBookToLibrary(title, author, pages, isRead);
+    displayBookToScreen();
+
+    form.reset();
+    dialog.close();
+});

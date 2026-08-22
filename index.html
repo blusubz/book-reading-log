@@ -29,25 +29,26 @@
             <!-- Dialog form for book input -->
              <dialog id="dialog">
                 <form method="dialog" id="book-inputs">
+                    <!-- method=dialog allows button with submit to close dialog -->
                     <p>Please enter the following book properties to insert your book.</p>
                     <div>
                         <label for="title">Title</label>
-                        <input type="text" id="title" name="bookTitle" required>
+                        <input type="text" id="title" required autofocus>
                     </div>
                     <div>
                         <label for="author">Author</label>
-                        <input type="text" id="author" name="bookAuthor" required>
+                        <input type="text" id="author" required>
                     </div>
                     <div>
                         <label for="pages">Pages</label>
-                        <input type="number" id="pages" name="bookPages" required>
+                        <input type="number" id="pages" required>
                     </div>
                     <div>
                         <label for="read-status">Read Status</label>
-                        <input type="checkbox" id="read-status" name="readStatus">
+                        <input type="checkbox" id="read-status">
                     </div>
 
-                    <button type="submit">Submit</button>
+                    <button type="submit" id="submitBtn">Submit</button>
                 </form>
              </dialog>
              <button id="show-dialog">New Book</button>
