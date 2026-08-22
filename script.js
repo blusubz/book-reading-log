@@ -1,4 +1,4 @@
-const myLibrary = [];
+let myLibrary = [];
 
 function Book(title, author, pages, isRead, id) {
     // constructor
@@ -66,7 +66,11 @@ function displayBookToScreen() {
 
         // Remove Book object eventlistener
         deleteBtn.addEventListener('click', () => {
-            console.log(myLibrary[i].getID());
+            const id = myLibrary[i].getID();
+            const updatedLibrary = myLibrary.filter(book => book.id !== id);
+
+            myLibrary = updatedLibrary;
+            displayBookToScreen();
         });
     }
 }
