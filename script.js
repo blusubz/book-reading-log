@@ -7,16 +7,6 @@ function Book(title, author, pages, isRead, id) {
     this.pages = pages;
     this.isRead = isRead;
     this.id = id;
-
-    // this.info = function() {
-    //     let readStatus = this.isRead ? "have read" : "have not read yet"
-
-    //     return `${this.title} by ${this.author}, ${this.pages} pages, ${readStatus}.`
-    // }
-
-    this.getID = function() {
-        return this.id;
-    }
 }
 
 function addBookToLibrary(title, author, pages, isRead) {
@@ -60,6 +50,14 @@ function displayBookToScreen() {
                 td.textContent = bookValue;
                 td.appendChild(checkbox);
 
+                // On change of the Read Status checkbox
+                checkbox.addEventListener('change', () => {
+                    console.log('inside change event');
+                    myLibrary[i].isRead = checkbox.checked;
+                    td.textContent = myLibrary[i].isRead;
+                    td.appendChild(checkbox);
+                });
+
             } else {
                 td.textContent = bookValue;
             }
@@ -84,7 +82,7 @@ function displayBookToScreen() {
 
         // Remove Book object eventlistener
         deleteBtn.addEventListener('click', () => {
-            const id = myLibrary[i].getID();
+            const id = myLibrary[i].id;
             const updatedLibrary = myLibrary.filter(book => book.id !== id);
 
             myLibrary = updatedLibrary;
@@ -116,6 +114,7 @@ showDialog.addEventListener('click', () => {
 
 /* Driver Code Below */
 form.addEventListener('submit', (e) => {
+    console.log('SUBMITTING');
     e.preventDefault(); // Stops refresh of the page after button submit is clicked which would remove all data displayed on screen
 
     const title = document.getElementById('title').value;
