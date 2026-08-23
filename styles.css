@@ -60,3 +60,10 @@ button:hover {
     color: rgb(52, 75, 221);
     background-color: rgba(255, 255, 0, 0.716);
 }
+
+.btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 15px;
+}

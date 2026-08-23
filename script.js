@@ -8,11 +8,11 @@ function Book(title, author, pages, isRead, id) {
     this.isRead = isRead;
     this.id = id;
 
-    this.info = function() {
-        let readStatus = this.isRead ? "have read" : "have not read yet"
+    // this.info = function() {
+    //     let readStatus = this.isRead ? "have read" : "have not read yet"
 
-        return `${this.title} by ${this.author}, ${this.pages} pages, ${readStatus}.`
-    }
+    //     return `${this.title} by ${this.author}, ${this.pages} pages, ${readStatus}.`
+    // }
 
     this.getID = function() {
         return this.id;
@@ -35,14 +35,35 @@ function displayBookToScreen() {
     const tbody = document.querySelector('tbody');
     tbody.innerHTML = ''; // Clears render before any new book addition
     
+    // Loop to create a table row per Book object
     for (let i = 0; i < myLibrary.length; i++) {
         const tr = document.createElement('tr');
-        const bookPropertiesArr = [myLibrary[i].title, myLibrary[i].author, myLibrary[i].pages, myLibrary[i].isRead];
+        // const bookPropertiesArr = [myLibrary[i].title, myLibrary[i].author, myLibrary[i].pages, myLibrary[i].isRead];
+        const entries = Object.entries(myLibrary[i]); // Get key:value pairs per book
 
         // Loop to add current book property elements into current table row
-        for (let j = 0; j < bookPropertiesArr.length; j++) {
+        for (let j = 0; j < entries.length; j++) {
             const td = document.createElement('td');
-            td.textContent = bookPropertiesArr[j]
+            const [bookProperty, bookValue] = entries[j]; 
+            
+
+            // Filter out anything not a book property to display such as title, author, pages and read status
+            if (typeof bookValue === 'function' || bookProperty === 'id') {
+                continue;
+            }
+
+            // Add td into tr
+            if (bookProperty === 'isRead') {
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.checked = bookValue;
+                td.textContent = bookValue;
+                td.appendChild(checkbox);
+
+            } else {
+                td.textContent = bookValue;
+            }
+            
             tr.appendChild(td);
         }
 
@@ -108,3 +129,13 @@ form.addEventListener('submit', (e) => {
     form.reset();
     dialog.close();
 });
+
+
+// TODO:
+// - Finish task 6
+// -- Create functional checkbox on change (checking the box makes it true, unchecking makes it false)
+// -- Style the isRead table data cell, give the text/input a gap and make it centered
+// - make dialog central to page
+// - Make button arrows have a glow effect if possible
+
+console.log(myLibrary);
