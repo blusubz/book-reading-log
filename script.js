@@ -50,7 +50,7 @@ function displayBookToScreen() {
         const deleteBtn = document.createElement('button');
         const deleteBtnTableData = document.createElement('td');
         // Set an id for deleteBtn
-        deleteBtn.setAttribute('id', 'deleteBtn');
+        deleteBtn.classList.add('delete-btn');
         // Give deleteBtn text
         deleteBtn.textContent = 'Remove Book';
         // Append deleteBtn to td
@@ -60,9 +60,6 @@ function displayBookToScreen() {
 
         // Append tr to tbody
         tbody.appendChild(tr);
-
-        
-
 
         // Remove Book object eventlistener
         deleteBtn.addEventListener('click', () => {

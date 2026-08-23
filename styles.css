@@ -55,7 +55,7 @@ button:hover {
     cursor: pointer;
 }
 
-#deleteBtn {
+.delete-btn {
     border-radius: 10px;
     color: rgb(52, 75, 221);
     background-color: rgba(255, 255, 0, 0.716);
