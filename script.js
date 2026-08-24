@@ -45,19 +45,28 @@ function displayBookToScreen() {
             // Add td into tr
             if (bookProperty === 'isRead') {
                 const checkbox = document.createElement('input');
+                const label = document.createElement('label');
+                const span = document.createElement('span');
+
+                // Give label a class
+                label.classList.add('td-label');
+
+                // OLD 
                 checkbox.type = 'checkbox';
                 checkbox.checked = bookValue;
-                td.textContent = bookValue;
-                td.appendChild(checkbox);
+                // td.textContent = bookValue;
+                // td.appendChild(checkbox);
+                span.textContent = bookValue;
+                label.appendChild(span);
+                label.appendChild(checkbox);
 
                 // On change of the Read Status checkbox
                 checkbox.addEventListener('change', () => {
                     console.log('inside change event');
                     myLibrary[i].isRead = checkbox.checked;
-                    td.textContent = myLibrary[i].isRead;
-                    td.appendChild(checkbox);
+                    span.textContent = myLibrary[i].isRead;
                 });
-
+                td.appendChild(label);
             } else {
                 td.textContent = bookValue;
             }
@@ -68,7 +77,7 @@ function displayBookToScreen() {
         // Create button to remove book from table
         const deleteBtn = document.createElement('button');
         const deleteBtnTableData = document.createElement('td');
-        // Set an id for deleteBtn
+        // Set a class for deleteBtn
         deleteBtn.classList.add('delete-btn');
         // Give deleteBtn text
         deleteBtn.textContent = 'Remove Book';
@@ -114,7 +123,6 @@ showDialog.addEventListener('click', () => {
 
 /* Driver Code Below */
 form.addEventListener('submit', (e) => {
-    console.log('SUBMITTING');
     e.preventDefault(); // Stops refresh of the page after button submit is clicked which would remove all data displayed on screen
 
     const title = document.getElementById('title').value;
@@ -132,7 +140,6 @@ form.addEventListener('submit', (e) => {
 
 // TODO:
 // - Finish task 6
-// -- Create functional checkbox on change (checking the box makes it true, unchecking makes it false)
 // -- Style the isRead table data cell, give the text/input a gap and make it centered
 // - make dialog central to page
 // - Make button arrows have a glow effect if possible

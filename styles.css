@@ -67,3 +67,9 @@ button:hover {
     justify-content: space-around;
     gap: 15px;
 }
+
+.td-label {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
