@@ -62,7 +62,6 @@ function displayBookToScreen() {
 
                 // On change of the Read Status checkbox
                 checkbox.addEventListener('change', () => {
-                    console.log('inside change event');
                     myLibrary[i].isRead = checkbox.checked;
                     span.textContent = myLibrary[i].isRead;
                 });
@@ -100,18 +99,6 @@ function displayBookToScreen() {
     }
 }
 
-// Books to add to Library
-// addBookToLibrary('The Voudou Quantum Leap', 'Reginald Crosley', 384, true);
-// addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 295, false);
-// addBookToLibrary('The Resurrection of the Soul', 'Abdullah', 120, true);
-// addBookToLibrary('Your Faith is Your Fortune', 'Neville Goddard', 192, true);
-// addBookToLibrary('Kybalion', 'Three Initiates', 106, true);
-// addBookToLibrary('The Secret Teachings of All Ages', 'Manly P. Hall', 736, true);
-// addBookToLibrary('The Secret Doctrine', 'Helena Blavatsky', 1408, false);
-// addBookToLibrary('The Corpus Hermeticum', 'Hermes Trismegistus', 160, true);
-// addBookToLibrary('Initiation Into Hermetics', 'Franz Bardon', 356, false);
-// addBookToLibrary('The Key to True Quabbalah', 'Franz Bardon', 280, false);
-
 /* Dialog Trigger */
 const showDialog = document.getElementById('show-dialog');
 const dialog = document.getElementById('dialog');
@@ -138,10 +125,3 @@ form.addEventListener('submit', (e) => {
 });
 
 
-// TODO:
-// - Finish task 6
-// -- Style the isRead table data cell, give the text/input a gap and make it centered
-// - make dialog central to page
-// - Make button arrows have a glow effect if possible
-
-console.log(myLibrary);
