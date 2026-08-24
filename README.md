@@ -1,0 +1,1 @@
+[![Live Demo](https://img.shields.io/badge/Live_Demo-🚀-blue?style=for-the-badge)](https://blusubz.github.io/book-reading-log/)
