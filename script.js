@@ -1,13 +1,23 @@
 let myLibrary = [];
 
-function Book(title, author, pages, isRead, id) {
-    // constructor
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.isRead = isRead;
-    this.id = id;
+class Book {
+    constructor(title, author, pages, isRead, id) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.isRead = isRead;
+        this.id = id;
+    }
 }
+
+// function Book(title, author, pages, isRead, id) {
+//     // constructor
+//     this.title = title;
+//     this.author = author;
+//     this.pages = pages;
+//     this.isRead = isRead;
+//     this.id = id;
+// }
 
 function addBookToLibrary(title, author, pages, isRead) {
     // Universal Unique Identifier = UUID
@@ -123,5 +133,3 @@ form.addEventListener('submit', (e) => {
     form.reset();
     dialog.close();
 });
-
-
