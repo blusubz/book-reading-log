@@ -112,6 +112,14 @@ showDialog.addEventListener('click', () => {
 form.addEventListener('submit', (e) => {
     e.preventDefault(); // Stops refresh of the page after button submit is clicked which would remove all data displayed on screen
 
+    titleValidation({ showError: true });
+    authorValidation({ showError: true });
+    pagesValidation({ showError: true });
+
+    if (!form.checkValidity()) {
+        return;
+    }
+
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
     const pages = document.getElementById('pages').value;
