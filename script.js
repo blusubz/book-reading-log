@@ -8,16 +8,7 @@ class Book {
         this.isRead = isRead;
         this.id = id;
     }
-}
-
-// function Book(title, author, pages, isRead, id) {
-//     // constructor
-//     this.title = title;
-//     this.author = author;
-//     this.pages = pages;
-//     this.isRead = isRead;
-//     this.id = id;
-// }
+} 
 
 function addBookToLibrary(title, author, pages, isRead) {
     // Universal Unique Identifier = UUID
@@ -46,7 +37,6 @@ function displayBookToScreen() {
             const td = document.createElement('td');
             const [bookProperty, bookValue] = entries[j]; 
             
-
             // Filter out anything not a book property to display such as title, author, pages and read status
             if (typeof bookValue === 'function' || bookProperty === 'id') {
                 continue;
@@ -133,3 +123,104 @@ form.addEventListener('submit', (e) => {
     form.reset();
     dialog.close();
 });
+
+// New feature for form validation code below
+const titleInput = document.getElementById("title");
+const authorInput = document.getElementById("author");
+const pagesInput = document.getElementById("pages");
+const readStatusInput = document.getElementById("read-status");
+
+const titleError = document.getElementById("title-error");
+const authorError = document.getElementById("author-error");
+const pagesError = document.getElementById("pages-error");
+const readStatusError = document.getElementById("readStatus-error");
+
+titleInput.addEventListener("input", e => {
+    titleValidation({ showError: false });
+});
+
+titleInput.addEventListener("blur", e => {
+    titleValidation({ showError: true });
+});
+
+authorInput.addEventListener("input", e => {
+    authorValidation({ showError: false });
+});
+
+authorInput.addEventListener("blur", e => {
+    authorValidation({ showError: true });
+});
+
+pagesInput.addEventListener("input", e => {
+    pagesValidation({ showError: false });
+});
+
+pagesInput.addEventListener("blur", e => {
+    pagesValidation({ showError: true });
+});
+
+function titleValidation({ showError = false } = {}) {
+    let message = "";
+
+    // find the valueMissing on input type text only? 
+    if (titleInput.validity.valueMissing) {
+        message = "Please enter the book title.";
+    }
+
+    titleInput.setCustomValidity(message);
+
+    if (!message) {
+        titleError.textContent = "";
+        titleInput.classList.remove("show-error");
+        return;
+    }
+
+    if (showError) {
+        titleError.textContent = message;
+        titleInput.classList.add("show-error");
+    }
+}
+
+function authorValidation({ showError = false} = {}) {
+    let message = "";
+
+    if (authorInput.validity.valueMissing) {
+        message = "Please enter author of book.";
+    }
+
+    authorInput.setCustomValidity(message);
+
+    if (!message) {
+        authorError.textContent = "";
+        authorInput.classList.remove("show-error");
+        return;
+    }
+
+    if (showError) {
+        authorError.textContent = message;
+        authorInput.classList.add("show-error");
+    }
+}
+
+function pagesValidation({ showError = false } = {}) {
+    let message = "";
+
+    if (pagesInput.validity.valueMissing) {
+        message = "Please enter amount of pages book contains.";
+    } else if (pagesInput.validity.rangeUnderflow) {
+        message = "Book must have a single page or more. Otherwise is it a book?";
+    }
+
+    pagesInput.setCustomValidity(message);
+
+    if (!message) {
+        pagesError.textContent = "";
+        pagesInput.classList.remove("show-error");
+        return;
+    }
+
+    if (showError) {
+        pagesError.textContent = message;
+        pagesInput.classList.add("show-error");
+    }
+}
