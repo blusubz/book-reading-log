@@ -128,12 +128,10 @@ form.addEventListener('submit', (e) => {
 const titleInput = document.getElementById("title");
 const authorInput = document.getElementById("author");
 const pagesInput = document.getElementById("pages");
-const readStatusInput = document.getElementById("read-status");
 
 const titleError = document.getElementById("title-error");
 const authorError = document.getElementById("author-error");
 const pagesError = document.getElementById("pages-error");
-const readStatusError = document.getElementById("readStatus-error");
 
 titleInput.addEventListener("input", e => {
     titleValidation({ showError: false });
